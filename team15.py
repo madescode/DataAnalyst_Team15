@@ -43,7 +43,7 @@ for sheet_name in sheet_names:
 
 
 # Judul aplikasi di Streamlit
-st.title("📊 Exploratory Data Analysis (EDA) untuk Dataset US_Regional_Sales_Data sebagai acuan pemilihan topik")
+st.title("📊 Exploratory Data Analysis (EDA) untuk Dataset US_Regional_Sales_Data sebagai insight dan acuan pemilihan topik")
 
 
 # Load dataset
@@ -89,8 +89,7 @@ plt.tight_layout()
 # Menampilkan grafik di Streamlit
 st.pyplot(fig)
 # 5. Penjelasan
-st.write("📌 *Penjelasan:* Grafik ini menunjukkan distribusi jumlah pesanan di setiap region dengan cara yang lebih mudah dibaca. "
-         "Grafik horizontal membantu lebih jelas dalam membandingkan region satu sama lain, serta mengurangi penumpukan label.")
+st.write("📌 * Grafik ini memberikan gambaran jelas tentang sebaran jumlah pesanan di berbagai region. Dengan menggunakan grafik batang horizontal, kita dapat dengan mudah membandingkan jumlah pesanan antar region. Region yang memiliki batang lebih panjang menunjukkan jumlah pesanan yang lebih tinggi, mengindikasikan potensi pasar yang lebih besar di region tersebut")
 
 # 6. Visualisasi Total Penjualan per Region dengan log scale untuk melihat distribusi yang lebih jelas
 st.subheader("💰 Total Penjualan Berdasarkan Region")
@@ -103,8 +102,8 @@ ax.set_xlabel("Region")
 ax.set_ylabel("Total Penjualan (log)")
 st.pyplot(fig)
 st.write("""
-📌 **Penjelasan:** Penggunaan skala log pada sumbu y memungkinkan kita untuk melihat lebih jelas variasi penjualan di tiap region, 
-terutama ketika terdapat perbedaan penjualan yang sangat besar antara region.
+📌 **Penjelasan:** Grafik ini menampilkan total penjualan di setiap region menggunakan skala logaritmik pada sumbu vertikal. Skala log membantu memvisualisasikan perbedaan besar dalam total penjualan antar region. 
+    Hal ini berguna ketika ada beberapa region dengan penjualan sangat tinggi yang dapat mendominasi grafik jika menggunakan skala linear biasa. Dengan skala log, kita dapat melihat variasi penjualan di semua region dengan lebih jelas.
 """)
 
 # 7. Analisis Saluran Penjualan dengan interaktivitas tambahan
@@ -116,8 +115,8 @@ ax.set_xlabel("Sales Channel")
 ax.set_ylabel("Jumlah Pesanan")
 st.pyplot(fig)
 st.write("""
-📌 **Penjelasan:** Analisis ini menunjukkan performa dari berbagai saluran penjualan seperti in-store, online, distributor, dan wholesale.
-Saluran penjualan yang paling aktif dapat membantu perusahaan fokus pada strategi pemasaran yang tepat.
+📌 **Penjelasan:** Grafik ini menunjukkan jumlah pesanan yang diterima melalui berbagai saluran penjualan (in-store, online, distributor, wholesale). Dengan membandingkan ketinggian batang, kita dapat mengidentifikasi saluran penjualan mana yang paling efektif dalam menghasilkan pesanan. 
+    Informasi ini sangat berharga untuk menentukan strategi pemasaran dan alokasi sumber daya yang tepat.
 """)
 
 # 8. Analisis Diskon terhadap Penjualan dengan korelasi tambahan
@@ -129,8 +128,8 @@ ax.set_xlabel("Diskon Diterapkan (%)")
 ax.set_ylabel("Total Penjualan")
 st.pyplot(fig)
 st.write("""
-📌 **Penjelasan:** Hubungan antara diskon dan penjualan dapat dilihat melalui scatter plot ini. 
-Perlu dianalisis lebih dalam apakah penjualan meningkat seiring dengan bertambahnya diskon, atau justru menurunkan profitabilitas.
+📌 **Penjelasan:** Scatter plot ini menggambarkan hubungan antara diskon yang diberikan dan total penjualan yang dihasilkan. Setiap titik mewakili satu transaksi, dengan warna menunjukkan region terkait. 
+    Dengan mengamati pola titik-titik, kita dapat melihat apakah ada korelasi antara diskon dan penjualan. Misalnya, jika titik-titik cenderung naik ke kanan, berarti diskon yang lebih tinggi cenderung menghasilkan penjualan yang lebih tinggi. Namun, perlu analisis lebih lanjut untuk memahami dampak diskon terhadap profitabilitas secara keseluruhan.
 """)
 
 # 9. Durasi Pemesanan dan Penjualan dengan distribusi tersegmentasi
@@ -142,8 +141,8 @@ ax.set_xlabel("Durasi Pemesanan (Hari)")
 ax.set_ylabel("Frekuensi")
 st.pyplot(fig)
 st.write("""
-📌 **Penjelasan:** Durasi pemesanan rata-rata dapat memberikan insight tentang kecepatan pengiriman produk.
-Menganalisis lebih dalam apakah durasi pengiriman yang lebih lama mempengaruhi kepuasan pelanggan.
+📌 **Penjelasan:** Histogram ini menunjukkan distribusi durasi pemesanan (waktu antara tanggal pesanan dan tanggal pengiriman). Bentuk distribusi dan letak puncaknya memberikan gambaran tentang seberapa cepat pesanan biasanya diproses dan dikirim. 
+    Informasi ini penting untuk memahami efisiensi operasional dan mengidentifikasi potensi area perbaikan dalam proses pemenuhan pesanan.
 """)
 
 # 10. Analisis Performa Produk: Produk Terlaris dengan tambahan filter
@@ -156,7 +155,8 @@ ax.set_xlabel("Product ID")
 ax.set_ylabel("Total Kuantitas Terjual")
 st.pyplot(fig)
 st.write("""
-📌 **Penjelasan:** Mengetahui produk-produk terlaris akan membantu perusahaan fokus pada produk yang paling diminati untuk meningkatkan penjualan.
+📌 **Penjelasan:** Grafik batang ini menampilkan 10 produk dengan penjualan tertinggi berdasarkan total kuantitas terjual. 
+    Dengan mengetahui produk-produk terlaris, perusahaan dapat fokus pada strategi pemasaran dan pengelolaan inventaris yang tepat untuk produk-produk tersebut.
 """)
 
 # 11. Analisis Tren Penjualan Bulanan dengan data smoothing
@@ -177,8 +177,8 @@ ax.set_ylabel('Total Penjualan')
 ax.legend()
 st.pyplot(fig)
 st.write("""
-📌 **Penjelasan:** Grafik menunjukkan tren penjualan bulanan dengan data smoothing. 
-Data asli dan hasil smoothing ditampilkan untuk membantu melihat pola tren yang lebih jelas, yang dapat membantu dalam merencanakan promosi musiman.
+📌 **Penjelasan:** Grafik garis ini menunjukkan tren penjualan bulanan dari waktu ke waktu. Garis biru mewakili data penjualan asli, sedangkan garis abu-abu menunjukkan data yang telah dihaluskan (smoothing) untuk mengurangi fluktuasi acak dan melihat pola tren yang lebih jelas. 
+    Dengan mengamati tren ini, perusahaan dapat mengidentifikasi pola musiman, memprediksi penjualan di masa depan, dan merencanakan strategi penjualan yang sesuai.
 """)
 
 # 8. Analisis Korelasi Antar Variabel Numerik
@@ -188,6 +188,10 @@ correlation_matrix = sales_df.corr(numeric_only=True)
 sns.heatmap(correlation_matrix, annot=True, cmap='Blues', linewidths=0.5, ax=ax)
 plt.title('Heatmap Korelasi')
 st.pyplot(fig)
+st.write("""
+📌 **Penjelasan:** Heatmap ini menunjukkan korelasi antara berbagai variabel numerik dalam dataset. Semakin terang warna biru pada suatu sel, semakin kuat korelasi positif antara dua variabel tersebut. 
+    Sebaliknya, warna biru yang lebih gelap menunjukkan korelasi negatif. Informasi ini berguna untuk mengidentifikasi hubungan antara variabel-variabel yang berbeda dan memahami faktor-faktor yang mungkin mempengaruhi penjualan.
+""")
 
 # 9. Analisis Outliers di Sales Amount
 st.subheader("🚨 Analisis Outliers di Sales Amount")
@@ -195,11 +199,16 @@ fig, ax = plt.subplots(figsize=(10, 6))
 sns.boxplot(data=sales_df, y='_SalesTeamID', color='lightcoral', ax=ax)
 plt.title('Analisis Outliers di Sales Amount')
 st.pyplot(fig)
+st.write("""
+📌 **Penjelasan:** Box plot ini membantu mengidentifikasi outliers (nilai ekstrem) dalam total penjualan. Titik-titik di luar batas atas dan bawah box plot dianggap sebagai outliers. 
+    Outliers ini perlu dianalisis lebih lanjut untuk memahami penyebabnya, apakah merupakan kesalahan data atau transaksi yang benar-benar luar biasa.
+""")
 
 # Rekomendasi Topik untuk Analisis Lanjutan
-st.subheader("💡 Rekomendasi Topik untuk Analisis Lanjutan")
+st.subheader("💡 Rekomendasi Topik untuk analisis project capstone")
 st.write("""
-1. **Performa Saluran Penjualan**: Analisis lebih mendalam terkait efektivitas masing-masing saluran penjualan.
+1. **Evaluasi Efektivitas Saluran Penjualan berdasarkan region**: Analisis ini sangat relevan karena kita telah melihat visualisasi distribusi pesanan berdasarkan saluran penjualan. 
+                                                                  Analisis lebih lanjut dapat menggali lebih dalam tentang performa masing-masing saluran, seperti membandingkan total penjualan, profitabilitas, atau menganalisis bagaimana kontribusi tiap saluran berbeda di setiap region.
 2. **Dampak Diskon terhadap Profitabilitas**: Investigasi lebih lanjut apakah diskon besar meningkatkan atau justru menurunkan profitabilitas.
 3. **Performa Produk di Region Berbeda**: Mengetahui produk mana yang laku di region tertentu bisa memberikan insight untuk strategi pemasaran yang lebih baik.
 4. **Customer Satisfaction & Order Duration**: Apakah durasi pemesanan berdampak pada tingkat kepuasan pelanggan?
